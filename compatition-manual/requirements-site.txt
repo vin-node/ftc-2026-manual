@@ -1,0 +1,4 @@
+zensical==0.0.62
+pypdf==6.19.0
+pypdfium2==5.13.0
+pdfplumber==0.11.10

@@ -1,0 +1,40 @@
+[project]
+site_name = "BIOBUZZ Manual"
+site_description = "A readable guide to the 2026-2027 FIRST Tech Challenge BIOBUZZ competition manual, with the full TU01 source text and page images."
+docs_dir = "compatition-manual/site-docs"
+site_dir = "manual-site"
+extra_css = ["stylesheets/extra.css"]
+extra_javascript = ["javascripts/reading-width.js", "javascripts/rule-tags.js"]
+nav = [
+  { "Start here" = "index.md" },
+  { "Cover & contents" = "source-pages.md" },
+  { "1 · Introduction" = "chapters/01-introduction.md" },
+  { "2 · Season overview" = "chapters/02-season-overview.md" },
+  { "3 · Eligibility & inspection (I)" = "chapters/03-eligibility-inspection.md" },
+  { "4 · Advancement" = "chapters/04-advancement.md" },
+  { "5 · Event rules (E)" = "chapters/05-event-rules.md" },
+  { "6 · Awards (A)" = "chapters/06-awards.md" },
+  { "7 · Sponsor" = "chapters/07-sponsor.md" },
+  { "8 · Game overview" = "chapters/08-game-overview.md" },
+  { "9 · Arena" = "chapters/09-arena.md" },
+  { "10 · Game details" = "chapters/10-game-details.md" },
+  { "11 · Game rules (G)" = "chapters/11-game-rules.md" },
+  { "12 · Robot construction (R)" = "chapters/12-robot-construction.md" },
+  { "13 · Tournament (T)" = "chapters/13-tournament.md" },
+  { "14 · League play (L)" = "chapters/14-league-play.md" },
+  { "15 · Championship (C)" = "chapters/15-championship.md" },
+  { "16 · Glossary" = "chapters/16-glossary.md" },
+]
+
+[project.theme]
+language = "en"
+features = ["navigation.footer", "navigation.sections", "navigation.top", "toc.follow", "search.highlight"]
+
+[project.theme.palette]
+scheme = "default"
+primary = "teal"
+accent = "deep orange"
+
+[project.markdown_extensions]
+md_in_html = {}
+attr_list = {}

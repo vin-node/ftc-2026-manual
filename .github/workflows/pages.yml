@@ -1,0 +1,55 @@
+name: Publish Zensical site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: compatition-manual/requirements-site.txt
+
+      - name: Install site dependencies
+        run: python -m pip install -r compatition-manual/requirements-site.txt
+
+      - name: Rebuild manual sources
+        run: |
+          python compatition-manual/build_markdown.py
+          python compatition-manual/build_site.py
+
+      - name: Build Zensical site
+        run: zensical build --strict --clean
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: manual-site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
